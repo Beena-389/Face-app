@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request
 import cv2
 import datetime, time
-import os, sys
+#import os, sys
 import numpy as np
 from threading import Thread
 
@@ -15,10 +15,10 @@ switch=1
 rec=0
 
 #make shots directory to save pics
-try:
-    os.mkdir('./shots')
-except OSError as error:
-    pass
+# try:
+#     os.mkdir('./shots')
+# except OSError as error:
+#     pass
 
 #Load pretrained face detection model    
 net = cv2.dnn.readNetFromCaffe('./deploy.prototxt.txt', './res10_300x300_ssd_iter_140000.caffemodel')
@@ -75,7 +75,7 @@ def gen_frames():  # generate frame by frame from camera
             if(capture):
                 capture=0
                 now = datetime.datetime.now()
-                p = os.path.sep.join(['shots', "shot_{}.png".format(str(now).replace(":",''))])
+#                 p = os.path.sep.join(['shots', "shot_{}.png".format(str(now).replace(":",''))])
                 cv2.imwrite(p, frame)
             
             if(rec):
